@@ -1,20 +1,18 @@
 import React from 'react'
-import { Container } from 'react-bootstrap';
 import Logo from '../assets/Vector.png'
-// import styled from 'styled-components';
+import Line from './Line'
 
-// const Styles = styled.div`
-// .container {
-
-// }
-// `;
-
-const Header = () => {
-
+const Header = (props) => {
   return (
-    <Container>
-            <img src={Logo} alt="SpaceX logo" style={{display: "flex", alignItems: "center"}}/>
-    </Container>
+    <div class="d-flex align-items-center justify-content-center classes"
+    style={{
+      paddingTop: "60px",
+      paddingBottom: "40px",
+      display: "flex",
+      flexDirection: "column"}}>
+      <img src={Logo} alt="SpaceX logo" style={{marginBottom: "40px"}}/>
+      <Line />
+    </div>
   )
 }
 

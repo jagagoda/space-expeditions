@@ -11,12 +11,12 @@ text-align: left;
 }
 .card-text {
   color: #FFFFFF;
-  font-size: 40px;
+  font-size: 16px;
   margin-bottom: 30px;
 }
 `;
 
-function Mission(props) {
+function LaunchDate(props) {
   const { item } = props;
 
   if (!item) {
@@ -25,10 +25,10 @@ function Mission(props) {
 
   return (
     <Styles>
-      <Card.Title>Mission</Card.Title>
-      <Card.Text>{item.mission_name}</Card.Text>
+      <Card.Title>Launch date</Card.Title>
+      <Card.Text>{item.launch_date_local}</Card.Text>
     </Styles>
   )
 }
 
-export default Mission
+export default LaunchDate

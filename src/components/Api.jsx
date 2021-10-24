@@ -4,6 +4,9 @@ import { gql, useQuery } from '@apollo/client';
 import Button from './Button';
 import Ships from './Ships';
 import { Container } from 'react-bootstrap'
+import Rocket from './Rocket';
+import LaunchDate from './LaunchDate';
+import LaunchSite from './LaunchSite';
 
 const MISSIONS_QUERY = gql`
 {
@@ -11,15 +14,25 @@ const MISSIONS_QUERY = gql`
     mission_name
     launch_date_local
     launch_site {
+      site_name
       site_name_long
+    }
+    links {
+      article_link
+      video_link
+    }
+    rocket {
+      rocket_name
     }
     ships {
       name
       home_port
       image
+      weight_kg
     }
   }
 }
+
 `;
 
 const Api = () => {
@@ -50,15 +63,18 @@ const Api = () => {
     }
     setLaunchIndex(index)
   }
-
   return (
     <Container>
       {launches[launchIndex] &&
         <>
           <Mission item={launches[launchIndex]} />
+          <LaunchDate item={launches[launchIndex]} />
+          <LaunchSite item={launches[launchIndex].launch_site} />
+          <Rocket item={launches[launchIndex].rocket} />
           <Ships items={launches[launchIndex].ships} />
         </>
       }
+
       <div>
         <Button text="previous" onClick={previous} />
         <Button text="next" onClick={next} />

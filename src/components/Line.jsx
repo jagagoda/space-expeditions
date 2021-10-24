@@ -3,9 +3,9 @@ import styled from 'styled-components'
 
 const Styles = styled.div`
 .break__line {
-  width: ${props => props.primary ? "1140px" : "260px"};
+  width: ${props => props.lineWidth? "260px" : "1300px"};
   height: 1px;
-  background-color: #E8E8E8;
+  background-color: ${props => props.lineColor ? "#E8E8E8" : "#5C5C5D"}
 
 }
 `;

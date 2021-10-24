@@ -1,23 +1,23 @@
 import React from 'react'
 import { Card } from "react-bootstrap"
 import styled from 'styled-components';
-import Line from './Line';
+
 
 const Styles = styled.div`
 .card-img {
-  height: 200px;
-  width: 295px;
+  height: 360px;
+  width: 340px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 .card {
-height: 300px;
-width: 295px;
+height: 390px;
+width: 340px;
 border-radius: 20px;
 border: 0;
-margin: 15px;
+margin: 30px;
 }
 .card-title {
   font-family: Roboto, sans-serif;
@@ -47,7 +47,6 @@ const Ship = ({ item }) => {
       <Card>
         <Card.Img src={item.image} />
         <Card.Title>{item.name}</Card.Title>
-        <Line />
         <Card.Text>HOME PORT {item.home_port}</Card.Text>
         <Card.Text>WEIGHT [KG] {item.weight_kg} </Card.Text>
       </Card>
