@@ -1,31 +1,30 @@
-import React from 'react';
+import React from 'react'
 import styled from 'styled-components'
 
 const Styles = styled.div`
 h1 {
   font-size: 16px;
   color: #868686;
-  text-transform: uppercase;
+  text-transform: uppercase;s
 }
 p {
-  font-size: 18px;
+  font-size: 38px;
   color: #FFFFFF;
 }
 `;
 
-const Rocket = (props) => {
+function MissionElement(props) {
   const { item } = props;
+
   if (!item) {
     return null;
   }
   return (
     <Styles>
-      <h1>Rocket</h1>
-      <p>
-        {item.rocket_name}
-      </p>
+      <h1>Mission</h1>
+      <p>{item.mission_name}</p>
     </Styles>
   )
 }
 
-export default Rocket
+export default MissionElement

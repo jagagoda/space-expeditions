@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import Mission from './Mission';
 import { gql, useQuery } from '@apollo/client';
 import Button from './Button';
 import Ships from './Ships';
@@ -7,6 +6,8 @@ import { Container } from 'react-bootstrap'
 import Rocket from './Rocket';
 import LaunchDate from './LaunchDate';
 import LaunchSite from './LaunchSite';
+import MissionElement from './MissionElement';
+import Line from './Line';
 
 const MISSIONS_QUERY = gql`
 {
@@ -66,15 +67,24 @@ const Api = () => {
   return (
     <Container>
       {launches[launchIndex] &&
-        <>
-          <Mission item={launches[launchIndex]} />
-          <LaunchDate item={launches[launchIndex]} />
-          <LaunchSite item={launches[launchIndex].launch_site} />
-          <Rocket item={launches[launchIndex].rocket} />
-          <Ships items={launches[launchIndex].ships} />
-        </>
+        <div class="row">
+          <div class="col-md-6">
+            <MissionElement item={launches[launchIndex]} />
+            <Rocket item={launches[launchIndex].rocket} />
+            <button style={{ padding: "15px 30px", border: "2px solid #FFFFFF", color: "white", fontSize: "14px", textTransform: "uppercase", backgroundColor: "transparent", marginBottom: "45px", marginTop: "20px" }}>Learn more</button>
+          </div>
+          <div class="col-md-6">
+            <LaunchDate item={launches[launchIndex]} />
+            <LaunchSite item={launches[launchIndex].launch_site} />
+          </div>
+          <Line />
+          <div class="row">
+            <div class="col-sm">
+              <Ships items={launches[launchIndex].ships} />
+            </div>
+          </div>
+        </div>
       }
-
       <div>
         <Button text="previous" onClick={previous} />
         <Button text="next" onClick={next} />

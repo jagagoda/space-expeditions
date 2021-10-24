@@ -1,21 +1,17 @@
 import React from 'react'
-import { Card } from "react-bootstrap"
 import styled from 'styled-components'
 
 const Styles = styled.div`
-.card-title {
-text-transform: uppercase;
-font-size: 16px;
-color: #868686;
-text-align: left;
-}
-.card-text {
-  color: #FFFFFF;
+h1 {
   font-size: 16px;
-  margin-bottom: 30px;
+  color: #868686;
+  text-transform: uppercase;
+}
+p {
+  font-size: 18px;
+  color: #FFFFFF;
 }
 `;
-
 function LaunchDate(props) {
   const { item } = props;
 
@@ -24,9 +20,9 @@ function LaunchDate(props) {
   }
 
   return (
-    <Styles>
-      <Card.Title>Launch date</Card.Title>
-      <Card.Text>{item.launch_date_local}</Card.Text>
+      <Styles>
+      <h1>Launch date</h1>
+      <p>{item.launch_date_local}</p>
     </Styles>
   )
 }
