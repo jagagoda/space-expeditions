@@ -1,17 +1,17 @@
 import React from 'react'
 import Ship from './Ship';
 
-const Ships = ({items}) => {
+const Ships = ({ items }) => {
 
   if (!items) {
     return null;
-  }else if (items.length === 0) {
+  } else if (items.length === 0) {
     return <h1> No ships to display</h1>
   }
   return (
-    <div>
+    <div class="d-flex justify-content-center">
       {items.map(item => {
-        return(
+        return (
           <Ship item={item} key={item.name} />
         )
       })}

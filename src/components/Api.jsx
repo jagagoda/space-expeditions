@@ -3,6 +3,7 @@ import Mission from './Mission';
 import { gql, useQuery } from '@apollo/client';
 import Button from './Button';
 import Ships from './Ships';
+import { Container } from 'react-bootstrap'
 
 const MISSIONS_QUERY = gql`
 {
@@ -28,7 +29,7 @@ const Api = () => {
 
   useEffect(() => {
     if (loading) {
-        return;
+      return;
     }
     setLaunches(data.launchesPast);
   }, [loading, data]);
@@ -51,17 +52,18 @@ const Api = () => {
   }
 
   return (
-    <div>
-          {launches[launchIndex] &&
+    <Container>
+      {launches[launchIndex] &&
         <>
           <Mission item={launches[launchIndex]} />
           <Ships items={launches[launchIndex].ships} />
         </>
       }
-      <Button text="previous" onClick={previous} />
-      <Button text="next" onClick={next} />
-
-    </div>
+      <div>
+        <Button text="previous" onClick={previous} />
+        <Button text="next" onClick={next} />
+      </div>
+    </Container>
   )
 }
 export default Api
