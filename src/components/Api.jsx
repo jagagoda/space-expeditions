@@ -1,13 +1,29 @@
 import React, { useEffect, useState } from 'react'
 import { gql, useQuery } from '@apollo/client';
-import Button from './Button';
 import Ships from './Ships';
-import { Container } from 'react-bootstrap'
-import Rocket from './Rocket';
-import LaunchDate from './LaunchDate';
-import LaunchSite from './LaunchSite';
-import MissionElement from './MissionElement';
-import Line from './Line';
+import Rocket from './MissionHero/Rocket';
+import LaunchDate from './MissionHero/LaunchDate';
+import LaunchSite from './MissionHero/LaunchSite';
+import Mission from './MissionHero/Mission';
+import LearnMore from './MissionHero/LearnMore';
+import Header from './Header';
+import styled from 'styled-components';
+
+const Button = styled.button`
+  padding: 15px 30px;
+  border: 2px solid #FFFFFF;
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  background-color: transparent;
+  margin-bottom: 45px;
+  margin-top: 20px;
+  width: 100%;
+
+  @media(min-width: 576px) {
+    width: fit-content;
+  }
+`;
 
 const MISSIONS_QUERY = gql`
 {
@@ -21,9 +37,14 @@ const MISSIONS_QUERY = gql`
     links {
       article_link
       video_link
+      mission_patch
+
     }
     rocket {
       rocket_name
+      rocket {
+        active
+      }
     }
     ships {
       name
@@ -40,6 +61,15 @@ const Api = () => {
   const { loading, data } = useQuery(MISSIONS_QUERY);
   const [launches, setLaunches] = useState([]);
   const [launchIndex, setLaunchIndex] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
 
   useEffect(() => {
     if (loading) {
@@ -65,31 +95,29 @@ const Api = () => {
     setLaunchIndex(index)
   }
   return (
-    <Container>
+    <>
+      <Header previous={previous} next={next} />
       {launches[launchIndex] &&
-        <div class="row">
-          <div class="col-md-6">
-            <MissionElement item={launches[launchIndex]} />
+        <div className="row">
+          <div className="col-md-6">
+            <Mission item={launches[launchIndex]} />
             <Rocket item={launches[launchIndex].rocket} />
-            <button style={{ padding: "15px 30px", border: "2px solid #FFFFFF", color: "white", fontSize: "14px", textTransform: "uppercase", backgroundColor: "transparent", marginBottom: "45px", marginTop: "20px" }}>Learn more</button>
+            <Button onClick={openModal}>Learn more</Button>
+            {isModalOpen &&
+              <>
+                <LearnMore item={launches[launchIndex]} />
+                <button onClick={closeModal}>close</button>
+              </>
+            }
           </div>
-          <div class="col-md-6">
+          <div className="col-md-6">
             <LaunchDate item={launches[launchIndex]} />
             <LaunchSite item={launches[launchIndex].launch_site} />
           </div>
-          <Line />
-          <div class="row">
-            <div class="col-sm">
-              <Ships items={launches[launchIndex].ships} />
-            </div>
-          </div>
+          <Ships items={launches[launchIndex].ships} />
         </div>
       }
-      <div>
-        <Button text="previous" onClick={previous} />
-        <Button text="next" onClick={next} />
-      </div>
-    </Container>
+    </>
   )
 }
 export default Api

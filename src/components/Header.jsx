@@ -1,18 +1,32 @@
 import React from 'react'
 import Logo from '../assets/Vector.png'
-import Line from './Line'
+import Line from './Line';
+import { IoIosArrowBack } from 'react-icons/io';
+import { IoIosArrowForward } from 'react-icons/io';
+import { Button } from 'react-bootstrap';
+import styled from 'styled-components';
 
-const Header = (props) => {
+const StyledLogo = styled.div`
+padding-top: 30px;
+padding-bottom: 20px;
+`;
+
+const Header = ({ previous, next }) => {
   return (
-    <div class="d-flex align-items-center justify-content-center classes"
-    style={{
-      paddingTop: "60px",
-      paddingBottom: "40px",
-      display: "flex",
-      flexDirection: "column"}}>
-      <img src={Logo} alt="SpaceX logo" style={{marginBottom: "40px"}}/>
+    <>
+      <StyledLogo>
+        <div className="d-flex justify-content-between align-items-center">
+          <Button className="mb-4" variant="link" onClick={previous}>
+            <IoIosArrowBack size={24} color='#fff' />
+          </Button>
+          <img src={Logo} alt="SpaceX logo" />
+          <Button className="mb-4" variant="link" onClick={next}>
+            <IoIosArrowForward size={24} color='#fff' />
+          </Button>
+        </div>
+      </StyledLogo>
       <Line />
-    </div>
+    </>
   )
 }
 

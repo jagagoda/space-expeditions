@@ -1,7 +1,8 @@
-import React from 'react';
+import React from 'react'
 import styled from 'styled-components'
 
 const Styles = styled.div`
+position: relative;
 h1 {
   font-size: 16px;
   color: #868686;
@@ -12,20 +13,15 @@ p {
   color: #FFFFFF;
 }
 `;
+const UniversalBox = (props) => {
+  const { title, children } = props;
 
-const Rocket = (props) => {
-  const { item } = props;
-  if (!item) {
-    return null;
-  }
   return (
     <Styles>
-      <h1>Rocket</h1>
-      <p>
-        {item.rocket_name}
-      </p>
+      <h1>{title}</h1>
+      {children}
     </Styles>
   )
 }
 
-export default Rocket
+export default UniversalBox;

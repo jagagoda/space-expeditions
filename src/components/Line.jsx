@@ -1,20 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Styles = styled.div`
-.break__line {
-  width: ${props => props.lineWidth? "260px" : "1300px"};
+const StyledDiv = styled.div`
   height: 1px;
-  background-color: ${props => props.lineColor ? "#E8E8E8" : "#5C5C5D"}
-
-}
+  background-color: ${props => props.lineColor};
+  margin: 0 5px;
 `;
-const Line = () => {
+
+const Line = (props) => {
+  console.log(props);
   return (
-    <Styles>
-      <div class="break__line d-flex justify-content-center"/>
-    </Styles>
+    <StyledDiv lineColor={props.lineColor} />
   )
 }
+
+Line.defaultProps = {
+  lineColor: "#5C5C5D",
+};
 
 export default Line
