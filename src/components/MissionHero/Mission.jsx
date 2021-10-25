@@ -16,7 +16,7 @@ function Mission(props) {
     return null;
   }
   return (
-    <Styles className=' mt-3 mt-xl-5'>
+    <Styles className='mt-3 mt-xl-5'>
       <UniversalBox title="mission">
         <p>{item.mission_name}</p>
       </UniversalBox>

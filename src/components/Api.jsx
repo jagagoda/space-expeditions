@@ -8,6 +8,7 @@ import Mission from './MissionHero/Mission';
 import LearnMore from './MissionHero/LearnMore';
 import Header from './Header';
 import styled from 'styled-components';
+import Line from './Line';
 
 const Button = styled.button`
   padding: 15px 30px;
@@ -23,6 +24,16 @@ const Button = styled.button`
   @media(min-width: 576px) {
     width: fit-content;
   }
+`;
+
+const TitleStyled = styled.div`
+h1 {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: #868686;
+  text-transform: uppercase;
+}
 `;
 
 const MISSIONS_QUERY = gql`
@@ -102,11 +113,10 @@ const Api = () => {
           <div className="col-md-6">
             <Mission item={launches[launchIndex]} />
             <Rocket item={launches[launchIndex].rocket} />
-            <Button onClick={openModal}>Learn more</Button>
+            <Button data-bs-toggle="modal" data-bs-target="#exampleModal">Learn more</Button>
             {isModalOpen &&
               <>
                 <LearnMore item={launches[launchIndex]} />
-                <button onClick={closeModal}>close</button>
               </>
             }
           </div>
@@ -114,6 +124,10 @@ const Api = () => {
             <LaunchDate item={launches[launchIndex]} />
             <LaunchSite item={launches[launchIndex].launch_site} />
           </div>
+          <TitleStyled>
+            <Line />
+            <h1>Rescue ships</h1>
+          </TitleStyled>
           <Ships items={launches[launchIndex].ships} />
         </div>
       }

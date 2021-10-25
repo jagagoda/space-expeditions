@@ -13,7 +13,6 @@ const Line = (props) => {
     <StyledDiv lineColor={props.lineColor} />
   )
 }
-
 Line.defaultProps = {
   lineColor: "#5C5C5D",
 };

@@ -12,10 +12,7 @@ const Rocket = (props) => {
   }
   return (
     <UniversalBox title="Rocket">
-      <p>
-        {item.rocket_name}
-      </p>
-      <p>{item.rocket.active ? "Recovered" : "Unrecovered"}</p>
+      <h5>{item.rocket_name}<span className="badge bg-success">{item.rocket.active ? "Recovered" : "Unrecovered"}</span></h5>
     </UniversalBox>
   )
 }

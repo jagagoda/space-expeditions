@@ -5,18 +5,18 @@ import Line from './Line';
 
 
 const Styles = styled.div`
+width: 100%;
 .card-img {
-  height: 250px;
+  height: 200px;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 .card {
-  width: 100%;
 border-radius: 20px;
 border: 0;
-margin-bottom: 24px;
+margin-bottom: 30px;
 }
 .card-title {
   font-family: Roboto, sans-serif;
@@ -32,6 +32,7 @@ margin-bottom: 24px;
   color: #868686;
   padding-left: 10px;
   margin-bottom: 15px;
+  margin-top: 10px;
 }
 
 `;
