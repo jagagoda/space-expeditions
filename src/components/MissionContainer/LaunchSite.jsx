@@ -17,46 +17,29 @@ top: -1em;
 left: -8em;
 padding: 3px 6px;
 `;
-const Styles = styled.div`
-h1 {
-  font-size: 16px;
-  color: #868686;
-  text-transform: uppercase;
-}
-p {
-  font-size: 18px;
-  color: #FFFFFF;
-}
-.launch__name {
-cursor: pointer;
-}
-`;
 
 function LaunchSite(props) {
   const { item } = props;
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false)
 
-  const openModal = () => setIsModalOpen(true)
-  const closeModal = () => setIsModalOpen(false)
+  const openTooltip = () => setIsTooltipOpen(true)
+  const closeTooltip = () => setIsTooltipOpen(false)
 
   if (!item) {
     return null;
   }
   return (
     <div className='d-flex align-items-xl-end flex-column'>
-      <UniversalBox title={"Launch Site"}>
-        <Styles>
-          <p
-            className="launch__name"
-            onMouseOver={openModal}
-            onMouseLeave={closeModal}>
-            {item.site_name}
-          </p>
-
-        </Styles>
+      <UniversalBox variant="right" title={"Launch Site"}>
+        <p
+          className="launch__name text-sm-start text-md-end text-xl-end"
+          onMouseOver={openTooltip}
+          onMouseLeave={closeTooltip}>
+          {item.site_name}
+        </p>
       </UniversalBox>
       <StylesTooltip>
-        {isModalOpen &&
+        {isTooltipOpen &&
           <p className="launch__modal">{item.site_name_long}</p>
         }
       </StylesTooltip>

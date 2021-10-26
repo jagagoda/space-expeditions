@@ -10,10 +10,7 @@ color: #FFFFFF;
 }
 `;
 
-
-
 const Ships = ({ items }) => {
-
   if (!items) {
     return null;
   } else if (items.length === 0) {
@@ -28,14 +25,13 @@ const Ships = ({ items }) => {
       <Row>
         {items.map(item => {
           return (
-            <Col md={6} xl={3}>
+            <Col key={item.name} md={6} xl={3}>
               <Ship item={item} key={item.name} />
             </Col>
           )
         })}
       </Row>
     </div>
-
   )
 }
 

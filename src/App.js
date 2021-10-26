@@ -1,8 +1,8 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import  Container  from 'react-bootstrap/Container';
+import { Container }  from 'react-bootstrap';
 import styled from 'styled-components'
-import Api from './components/Api';
+import HomePage from './components/Pages/HomePage';
 
 const Styles = styled.div`
 padding: 0 8px;
@@ -13,7 +13,7 @@ function App() {
   return (
     <Styles>
     <Container className="App" >
-      <Api/>
+      <HomePage/>
     </Container>
     </Styles>
   );

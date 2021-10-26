@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { gql, useQuery } from '@apollo/client';
-import Ships from './Ships';
-import Rocket from './MissionHero/Rocket';
-import LaunchDate from './MissionHero/LaunchDate';
-import LaunchSite from './MissionHero/LaunchSite';
-import Mission from './MissionHero/Mission';
-import LearnMore from './MissionHero/LearnMore';
-import Header from './Header';
+import Ships from '../ShipsContainer/Ships';
+import Rocket from '../MissionContainer/Rocket';
+import LaunchDate from '../MissionContainer/LaunchDate';
+import LaunchSite from '../MissionContainer/LaunchSite';
+import Mission from '../MissionContainer/Mission';
+import LearnMore from '../MissionContainer/LearnMore';
+import Header from '../HeaderContainer/Header';
 import styled from 'styled-components';
-import Line from './Line';
+import Line from '../Line';
 
 const Button = styled.button`
-  padding: 15px 30px;
+  padding: 15px 40px;
   border: 2px solid #FFFFFF;
   color: white;
   font-size: 14px;
   text-transform: uppercase;
   background-color: transparent;
-  margin-bottom: 45px;
-  margin-top: 20px;
+  margin-bottom: 35px;
+  margin-top: 30px;
   width: 100%;
 
   @media(min-width: 576px) {
@@ -28,6 +28,7 @@ const Button = styled.button`
 
 const TitleStyled = styled.div`
 h1 {
+  letter-spacing: 1.5px;
   margin-top: 30px;
   margin-bottom: 15px;
   font-size: 16px;
@@ -49,7 +50,6 @@ const MISSIONS_QUERY = gql`
       article_link
       video_link
       mission_patch
-
     }
     rocket {
       rocket_name
@@ -65,7 +65,6 @@ const MISSIONS_QUERY = gql`
     }
   }
 }
-
 `;
 
 const Api = () => {
@@ -73,14 +72,6 @@ const Api = () => {
   const [launches, setLaunches] = useState([]);
   const [launchIndex, setLaunchIndex] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => {
-    setIsModalOpen(true)
-  }
-
-  const closeModal = () => {
-    setIsModalOpen(false)
-  }
 
   useEffect(() => {
     if (loading) {
@@ -91,13 +82,12 @@ const Api = () => {
 
   const next = () => {
     const index = launchIndex + 1;
-
     if (index > launches.length - 1) {
       return;
     }
-
     setLaunchIndex(index);
   }
+
   const previous = () => {
     const index = launchIndex - 1;
     if (index < 0) {
@@ -105,20 +95,25 @@ const Api = () => {
     }
     setLaunchIndex(index)
   }
+
+  const closeModal = () => setIsModalOpen(false)
+
   return (
     <>
-      <Header previous={previous} next={next} />
+      <Header
+        previous={previous}
+        previousDisabled={launchIndex === 0}
+        next={next}
+        nextDisabled={launchIndex === launches.length - 1}
+      />
+
       {launches[launchIndex] &&
         <div className="row">
           <div className="col-md-6">
             <Mission item={launches[launchIndex]} />
             <Rocket item={launches[launchIndex].rocket} />
-            <Button data-bs-toggle="modal" data-bs-target="#exampleModal">Learn more</Button>
-            {isModalOpen &&
-              <>
-                <LearnMore item={launches[launchIndex]} />
-              </>
-            }
+            <Button onClick={() => setIsModalOpen(true)}>Learn more</Button>
+            <LearnMore item={launches[launchIndex]} isOpen={isModalOpen} isClosed={closeModal} />
           </div>
           <div className="col-md-6">
             <LaunchDate item={launches[launchIndex]} />

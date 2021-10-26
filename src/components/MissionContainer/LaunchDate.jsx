@@ -10,11 +10,12 @@ const LaunchDate = (props) => {
     return null;
   }
   return (
-    <div className='mt-xl-5 d-flex align-items-xl-end flex-column'>
-      <UniversalBox title={"Launch Date"}>
-        <p>{format(new Date(date),'d LLL Y')}</p>
-      </UniversalBox>
-    </div>
+    <UniversalBox
+      variant="right"
+      title={"Launch Date"}
+      className='mt-1 mt-xl-5 d-flex align-items-xl-end flex-column'>
+      <p className='text-sm-start text-md-end text-xl-end'>{format(new Date(date), 'd LLL Y')}</p>
+    </UniversalBox>
   )
 }
 

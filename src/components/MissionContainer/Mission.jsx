@@ -2,11 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import UniversalBox from './UniversalBox';
 
-const Styles = styled.div`
-p {
-  font-size: 38px;
+
+const MissionName = styled.p`
+  font-size: 38px  !important;
   color: #FFFFFF;
-}
 `;
 
 function Mission(props) {
@@ -16,11 +15,11 @@ function Mission(props) {
     return null;
   }
   return (
-    <Styles className='mt-3 mt-xl-5'>
-      <UniversalBox title="mission">
-        <p>{item.mission_name}</p>
-      </UniversalBox>
-    </Styles>
+    <UniversalBox
+      title="mission"
+      className='mt-3 mt-xl-5'>
+      <MissionName> {item.mission_name}</MissionName>
+    </UniversalBox>
   )
 }
 

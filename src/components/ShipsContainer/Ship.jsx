@@ -1,9 +1,12 @@
 import React from 'react'
 import { Card } from "react-bootstrap"
 import styled from 'styled-components';
-import Line from './Line';
+import Line from '../Line';
 
-
+const StyledShipDetails = styled.div`
+margin-top: 15px;
+margin-bottom: 15px;
+`;
 const Styles = styled.div`
 width: 100%;
 .card-img {
@@ -24,18 +27,21 @@ margin-bottom: 30px;
   font-weight: 700;
   padding-left: 10px;
   margin-top: 15px;
-
 }
-.card-text {
+  h5 {
   font-size: 12px;
   font-weight: 500;
   color: #868686;
-  padding-left: 10px;
-  margin-bottom: 15px;
-  margin-top: 10px;
+  padding-left: 15px;
 }
-
+span {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+  margin-left: 32px;
+}
 `;
+
 const Ship = ({ item }) => {
   if (!item) {
     return null;
@@ -46,8 +52,12 @@ const Ship = ({ item }) => {
         <Card.Img src={item.image} />
         <Card.Title>{item.name}</Card.Title>
         <Line lineColor="#E8E8E8" />
-        <Card.Text>HOME PORT {item.home_port}</Card.Text>
-        <Card.Text>WEIGHT [KG] {item.weight_kg} </Card.Text>
+        <StyledShipDetails>
+          <h5>HOME PORT<span>{item.home_port}</span></h5>
+          <h5>WEIGHT [KG]
+            {item.weight_kg ?
+              <span>{item.weight_kg}</span> : <span>No data available</span>}</h5>
+        </StyledShipDetails>
       </Card>
     </Styles>
   )
