@@ -7,14 +7,11 @@ It is an application using spaceX api, where you will learn something about spac
 The application is created using create-react-app, styled-components and bootstrap. The api I used comes from here https://api.spacex.land/graphql/.
 
 # How to start the app
-To start the application, after downloading the project, you need to download the node modules using
+To start the application, after downloading the project, you need to download the node modules. In the project directory terminal run:
 ### `yarn add` 
-in the project directory terminal
-
-Then start the project using
+Then to start the project run:
 ### `yarn start` 
-
 Open (http://localhost:3000) to view it in the browser.
 
-#Enjoy!
+# Enjoy!
 
