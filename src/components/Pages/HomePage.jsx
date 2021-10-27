@@ -67,7 +67,7 @@ const MISSIONS_QUERY = gql`
 }
 `;
 
-const Api = () => {
+const HomePage = () => {
   const { loading, data } = useQuery(MISSIONS_QUERY);
   const [launches, setLaunches] = useState([]);
   const [launchIndex, setLaunchIndex] = useState(0);
@@ -129,4 +129,4 @@ const Api = () => {
     </>
   )
 }
-export default Api
+export default HomePage

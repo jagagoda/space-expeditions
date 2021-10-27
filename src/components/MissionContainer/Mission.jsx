@@ -8,7 +8,7 @@ const MissionName = styled.p`
   color: #FFFFFF;
 `;
 
-function Mission(props) {
+const Mission = (props) => {
   const { item } = props;
 
   if (!item) {

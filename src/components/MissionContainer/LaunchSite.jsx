@@ -18,7 +18,7 @@ left: -8em;
 padding: 3px 6px;
 `;
 
-function LaunchSite(props) {
+const LaunchSite = (props) => {
   const { item } = props;
   const [isTooltipOpen, setIsTooltipOpen] = useState(false)
 
